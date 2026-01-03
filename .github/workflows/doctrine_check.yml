@@ -1,0 +1,14 @@
+
+name: Doctrine Check
+
+on: [push, pull_request]
+
+jobs:
+  doctrine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Verify doctrine invariants
+        run: |
+          grep -q "Correlation is not upgraded to causation" DOCTRINE.md
+          grep -q "Prediction ≠ decision" DOCTRINE.md
